@@ -1,0 +1,21 @@
+<h2>Order Details</h2>
+<% @order_items.each do |order_item| %>
+  <tr>
+    <td>
+      <%= image_tag order_item.product.image.tiny %>
+    </td>
+    <td>
+      <%= order_item.product.name %>
+    </td>
+    <td>
+      <%= order_item.product.description %>
+    </td>
+    <td>
+      <%= order_item.quantity %>
+    </td>
+    <td>
+      $<%= order_item.quantity * order_item.product.price %>
+    </td>
+
+  </tr>
+<% end %>
