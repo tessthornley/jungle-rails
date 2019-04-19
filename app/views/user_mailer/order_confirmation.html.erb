@@ -1,0 +1,9 @@
+<p>Thank you for your order, <%= @email %>! Please find your order details below.<p>
+<table>
+  <tbody>
+    <%= render 'order_email' %>
+  </tbody>
+</table>
+
+<p> Total: $<%= @order.total %></p>
+<p>Jungle</p>
