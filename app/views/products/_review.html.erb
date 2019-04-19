@@ -1,0 +1,11 @@
+<h2>Reviews</h2>
+<% @reviews.each do |review| %>
+  <tr>
+    <td>
+      <%= review.description %>
+    </td>
+    <td>
+      <%= review.rating %>
+    </td>
+  </tr>
+<% end %>
