@@ -26,11 +26,28 @@
       </div>
     </div>
 
+    <h2>Leave a Review:</h2>
+    <table class="table table-bordered">
+      <%= form_for :review, url: "#{params[:id]}/reviews" do |form| %>
+        <div class="form-group">
+          <%= form.label :description %>
+          <%= form.text_area :description, class: 'form-control' %>
+        </div>
+        <div class="dropdown">
+          <%= form.label :rating %>
+          <%= form.select :rating, [1, 2, 3, 4, 5] %><br/><br/>
+        </div>
+      <%= form.submit 'Create Review', class: 'btn btn-primary' %>
+      <% end %>
+    </table>
+
     <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Comment</th>
+        <th>Name</th>
+        <th>Description</th>
         <th>Rating</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody>

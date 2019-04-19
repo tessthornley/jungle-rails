@@ -132,6 +132,23 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+puts "Re-creating Users..."
+
+User.create!([
+  {
+    first_name: "Someone",
+    last_name: "X",
+    email: "email@email.com",
+    password_digest: "hi"
+  },
+  {
+    first_name: "Me",
+    last_name: "You",
+    email: "me@me.com",
+    password_digest: "me"
+  }
+])
+
 puts "Re-creating Reviews..."
 
 Review.create!([
