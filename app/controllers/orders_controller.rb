@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
     Stripe::Charge.create(
       source:      params[:stripeToken],
       amount:      cart_subtotal_cents,
-      description: "Khurram Virani's Jungle Order",
+      description: "Tess's Jungle Order",
       currency:    'cad'
     )
   end
@@ -54,7 +54,9 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
+    UserMailer.order_confirmation(order, current_user).deliver_now
     order
+
   end
 
 end
