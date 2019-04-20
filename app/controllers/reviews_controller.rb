@@ -7,9 +7,9 @@ class ReviewsController < ApplicationController
     
 
     if @review.save
-      redirect_to "/products/#{@review.product_id}"
+      redirect_to "/products/#{@review.product_id}", notice: 'Review Created!'
     else
-      redirect_to Product.find(@review.product_id)
+      redirect_to "/products/#{@review.product_id}"
     end
   end
 
