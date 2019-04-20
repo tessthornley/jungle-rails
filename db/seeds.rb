@@ -136,14 +136,14 @@ puts "Re-creating Users..."
 
 User.create!([
   {
-    first_name: "Someone",
-    last_name: "X",
+    first_name: "John",
+    last_name: "Smith",
     email: "email@email.com",
     password_digest: "hi"
   },
   {
-    first_name: "Me",
-    last_name: "You",
+    first_name: "Sarah",
+    last_name: "Johnson",
     email: "me@me.com",
     password_digest: "me"
   }
@@ -161,19 +161,19 @@ Review.create!([
   {
     product_id: 1,
     user_id: 2,
-    description: "Totally useless",
+    description: "Disappointing :(",
     rating: 1
   },
   {
     product_id: 2,
     user_id: 2,
-    description: "LOVE",
+    description: "Can't live without!",
     rating: 5
   },
   {
     product_id: 3,
     user_id: 3,
-    description: "So-so",
+    description: "Product is average.",
     rating: 3
   }
 ])
