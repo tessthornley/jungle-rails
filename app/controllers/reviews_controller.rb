@@ -9,14 +9,14 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to "/products/#{@review.product_id}"
     else
-      redirect_to Product.find(@review.product_id)
+      redirect_to "/products/#{@review.product_id}"
     end
   end
 
   def destroy
     @review = Review.find(params[:id])
     @review.destroy!
-    redirect_to Product.find(@review.product_id)
+    redirect_to "/products/#{@review.product_id}"
   end
 
   #before_filter: authorize
