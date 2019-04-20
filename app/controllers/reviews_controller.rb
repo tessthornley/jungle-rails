@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
     @review.product_id = params[:product_id]
     @review.user_id = current_user.id
     
-
     if @review.save
       redirect_to "/products/#{@review.product_id}", notice: 'Review Created!'
     else

@@ -10,10 +10,4 @@ class ProductsController < ApplicationController
     @review = Review.new
   end
 
-  def cool
-  end
-
-  def free
-  end
-
 end
