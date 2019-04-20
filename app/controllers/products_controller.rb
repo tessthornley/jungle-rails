@@ -10,8 +10,6 @@ class ProductsController < ApplicationController
     @review = Review.new
   end
 
-  #before_filter :authorize
-
   def cool
   end
 

@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_filter: authorize
+
   def create
     @review = Review.new(review_params)
     @review.product_id = params[:product_id]
@@ -19,8 +21,6 @@ class ReviewsController < ApplicationController
     redirect_to Product.find(@review.product_id)
   end
 
-  #before_filter: authorize
-
   private
 
   def review_params
@@ -28,6 +28,13 @@ class ReviewsController < ApplicationController
       :rating,
       :description
     )
+  end
+
+  def authorize
+    unless current_user
+      flash[:error] = "You must be logged in to access this section."
+      redirect_to [:login]
+    end
   end
 
 end
