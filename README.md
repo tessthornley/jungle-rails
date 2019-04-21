@@ -6,7 +6,7 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 !["Home Page"](https://github.com/tessthornley/jungle-rails/blob/master/docs/home-page.png)
 !["Review Section"](https://github.com/tessthornley/jungle-rails/blob/master/docs/review-section.png)
-!["Order Page"](https://github.com/tessthornley/jungle-rails/blob/master/docs/order-page.png)
+!["Order Page"](https://github.com/tessthornley/jungle-rails/blob/master/docs/order-page2.png)
 
 ## Setup
 
