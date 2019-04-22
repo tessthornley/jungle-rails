@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'Validations' do
 
-    context 'Presence of fields and uniqueness of email' do
+    context 'Presence of fields' do
       subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
 
       it 'is valid with valid attributes' do
@@ -38,6 +38,11 @@ RSpec.describe User, type: :model do
       it 'is valid if password and password_confirmation match' do
         expect(subject).to be_valid
       end
+
+    end
+
+    context 'email is unique' do 
+      subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
 
       it 'is valid when email is unique' do
         should validate_uniqueness_of(:email).case_insensitive
