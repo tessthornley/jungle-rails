@@ -13,9 +13,11 @@ class User < ActiveRecord::Base
   validates :password, presence: true, :length => { :minimum => 4}
   validates :password_confirmation, presence: true
 
+  scope :ci_find, lambda { |attribute, value| where("lower(#{attribute}) = ?", value.downcase).first }
+
   def self.authenticate_with_credentials(email, password)
     user_email = email.strip
-    @user = self.find_by_email(user_email)
+    @user = self.ci_find('email', user_email)
     if @user && @user.authenticate(password)
       return @user
     else

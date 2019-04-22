@@ -79,6 +79,11 @@ RSpec.describe User, type: :model do
       expect(User.authenticate_with_credentials(' tess.thornley@gmail.com ', subject.password)).to be_instance_of(User)
     end
 
+    it 'returns an instance of the user when wrong case is typed in email' do
+      subject.save!
+      expect(User.authenticate_with_credentials('tEss.ThOrnley@Gmail.coM', subject.password)).to be_instance_of(User)
+    end
+
   end
 
 end
