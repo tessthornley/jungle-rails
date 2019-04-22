@@ -139,13 +139,15 @@ User.create!([
     first_name: "John",
     last_name: "Smith",
     email: "email@email.com",
-    password_digest: "hi"
+    password: "hihihi",
+    password_confirmation: "hihihi",
   },
   {
     first_name: "Sarah",
     last_name: "Johnson",
     email: "me@me.com",
-    password_digest: "me"
+    password: "mememe",
+    password_confirmation: "mememe",
   }
 ])
 
