@@ -36,7 +36,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'is valid if password and password_confirmation match' do
-        should validate_confirmation_of(:password)
+        expect(subject).to be_valid
       end
 
       it 'is valid when email is unique' do
@@ -46,7 +46,6 @@ RSpec.describe User, type: :model do
     end
 
     context 'password and password_confirmation match' do
-
       subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => '') }
     
       it 'is not valid when password and password_confirmation dont match' do
@@ -56,7 +55,6 @@ RSpec.describe User, type: :model do
     end
 
     context 'password must be greater than or equal to 4 characters' do
-
       subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
 
       it 'is valid when password is greater than or equal to 4 characters' do
@@ -70,10 +68,15 @@ RSpec.describe User, type: :model do
   describe '.authenticate_with_credentials' do
     
     subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
-    
+
     it 'returns an instance of the user' do
       subject.save!
       expect(User.authenticate_with_credentials(subject.email, subject.password)).to be_instance_of(User)
+    end
+
+    it 'returns an instance of the user when spaces are before or after email' do
+      subject.save!
+      expect(User.authenticate_with_credentials(' tess.thornley@gmail.com ', subject.password)).to be_instance_of(User)
     end
 
   end
