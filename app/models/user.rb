@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
     user_email = email.strip
     @user = self.ci_find('email', user_email)
     if @user && @user.authenticate(password)
-      return @user
+      @user
     else
-      return nil
+      nil
     end
   end
   

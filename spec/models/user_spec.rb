@@ -55,10 +55,10 @@ RSpec.describe User, type: :model do
     end
 
     context 'password must be greater than or equal to 4 characters' do
-      subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
+      subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tes', :password_confirmation => 'tes') }
 
-      it 'is valid when password is greater than or equal to 4 characters' do
-        expect(subject).to be_valid
+      it 'is not valid when password is less than 4 characters' do
+        expect(subject).to_not be_valid
       end
 
     end
