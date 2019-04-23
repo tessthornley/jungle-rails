@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'Validations' do
 
+    subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
+
     context 'Presence of fields' do
-      subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
 
       it 'is valid with valid attributes' do
         expect(subject).to be_valid
@@ -42,7 +43,6 @@ RSpec.describe User, type: :model do
     end
 
     context 'email is unique' do 
-      subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
 
       it 'is valid when email is unique' do
         should validate_uniqueness_of(:email).case_insensitive
@@ -51,18 +51,21 @@ RSpec.describe User, type: :model do
     end
 
     context 'password and password_confirmation match' do
-      subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => '') }
     
       it 'is not valid when password and password_confirmation dont match' do
+        subject.password_confirmation = 'sset'
+        subject.save
         expect(subject).to_not be_valid
       end
 
     end
 
     context 'password must be greater than or equal to 4 characters' do
-      subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tes', :password_confirmation => 'tes') }
 
       it 'is not valid when password is less than 4 characters' do
+        subject.password = 'tes'
+        subject.password_confirmation = 'tes'
+        subject.save
         expect(subject).to_not be_valid
       end
 
