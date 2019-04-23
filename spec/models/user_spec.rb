@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'Validations' do
+ 
+  subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
 
-    subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
+  describe 'Validations' do
 
     context 'Presence of fields' do
 
@@ -75,8 +76,6 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
     
-    subject { User.new(:first_name => 'Tess', :last_name => 'Thornley', :email => 'tess.thornley@gmail.com', :password => 'tess', :password_confirmation => 'tess') }
-
     it 'returns an instance of the user' do
       subject.save!
       expect(User.authenticate_with_credentials(subject.email, subject.password)).to be_instance_of(User)
